@@ -39,5 +39,5 @@ node demandes-serveur.js
 
 Un message devrait confirmer que votre serveur fonctionne et que vous écoutez sur le port 8080. Si ce n'est pas le cas. Recommencez les étapes depuis le debut.
 
-![Alt text](/demandes-serveur/Doc/image/nodejs.JPEG)
+![Alt text](https://github.com/Saykio/demandes-serveur/blob/master/Doc/image/nodejs.JPG)
 
