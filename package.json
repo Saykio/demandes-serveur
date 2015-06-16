@@ -1,0 +1,20 @@
+{
+  "name": "demandes-serveur",
+  "version": "1.0.0",
+  "description": "stage node js serveur de demande de congés",
+  "main": "demandes-serveur.js",
+  "dependencies": {
+    "body-parser": "^1.13.0",
+    "express": "^4.12.4",
+    "mysql": "^2.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "stage"
+  ],
+  "author": "",
+  "license": "ISC"
+}

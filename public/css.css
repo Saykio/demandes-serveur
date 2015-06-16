@@ -1,0 +1,80 @@
+.ds_box {
+	background-color: #FFF;
+	border: 1px solid #000;
+	position: absolute;
+	z-index: 32767;
+}
+
+.ds_tbl {
+	background-color: #FFF;
+}
+
+.ds_head {
+	background-color: #333;
+	color: #FFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	text-align: center;
+	letter-spacing: 2px;
+}
+
+.ds_subhead {
+	background-color: #CCC;
+	color: #000;
+	font-size: 12px;
+	font-weight: bold;
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	width: 32px;
+}
+
+.ds_cell {
+	background-color: #EEE;
+	color: #000;
+	font-size: 13px;
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.ds_cell:hover {
+	background-color: #F3F3F3;
+} /* This hover code won't work for IE */
+
+.listederoulante{
+margin-left:110px; 
+}
+.listederoulante1{
+margin-left:110px; 
+}
+.debut {
+vertical-align : text-top;}
+.fin {
+vertical-align : text-top;}
+.decale{
+margin-left: 32px;}
+.decale1{
+margin-left: 52px;}
+.bordure{;
+background-color:#79F8F8;
+border:1px dotted #000000;
+padding:0.10em;
+display : block ;
+}
+"border:3px double }
+p {
+  display:table-cell;
+  width:130px;
+  padding:10px;
+}
+.blanc{
+background-color : white ;
+}
+.gris{
+background-color : grey;
+}
+.rouge{background-color : red;
+}
+

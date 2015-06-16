@@ -1,0 +1,9 @@
+/.svn/*
+/bower_components/*
+/.settings/*
+/lib/*
+.bowerr
+.buildpath
+.project
+ton_fichier.log
+node_modules/*
