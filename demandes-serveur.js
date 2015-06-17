@@ -6,7 +6,7 @@ var express = require('express');
 var app = express();
 
 app.use(bodyParser.json());
-app.use('/RH', express.static('public'));
+app.use('/rh', express.static('public'));
 
 // Initialisation de la connexion au serveur SGBD MYSQL
 var connection = mysql.createConnection({

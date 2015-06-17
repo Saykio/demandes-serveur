@@ -2,15 +2,13 @@
 <html ng-app="moduleDemandes">
 
 <head>
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/demande.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <script src="bower_components/angularjs/angular.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <!-- <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script> -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="js/demande.js"></script>
-    <link href="bower_components/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css" rel="stylesheet">
-    <script src="bower_components/angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.min.js"></script>
     <script src="lib/interactjs\interact-1.2.4.min.js"></script>
     <script src="bower_components/moment/moment.js"></script>
     <link href="bower_components/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css" rel="stylesheet">
@@ -20,8 +18,8 @@
 </head>
 
 <body ng-controller="DemandesControleur">
-    <div class="page-header entete">
-        <h1>Demande de congé</h1>
+    <div class="entete">
+        <h4 class="bonsoir">Demande de congé</h4>
     </div>
     <div class="container">
         <form method="post">
@@ -72,20 +70,42 @@
 				<p ng-show="valide">Votre requête a bien été enregistrée!</p>
 			</h4>
             <button ng-click="envoyerDemande()" type="submit" class="btn btn-default">Ajouter</button>
-            <button class="btn btn-primary" mwl-date-modifier date="calendarDay" decrement="calendarView">
-                Previous
-            </button>
+            <br>
+            <div class="bonjour">
+                <br>
+                <button class="btn btn-primary" mwl-date-modifier date="calendarDay" decrement="calendarView">
+                    Suivant
+                </button>
 
-            <button class="btn btn-default" mwl-date-modifier date="calendarDay" set-to-today>
-                Today
-            </button>
+                <button class="btn btn-default" mwl-date-modifier date="calendarDay" set-to-today>
+                    Aujourd'hui
+                </button>
 
-            <button class="btn btn-primary" mwl-date-modifier date="calendarDay" increment="calendarView">
-                Next
-            </button>
+                <button class="btn btn-primary" mwl-date-modifier date="calendarDay" increment="calendarView">
+                    Précédent
+                </button><br>
+                <div class="bonjour1"><br>
+                    <button label class="btn btn-primary ng-untouched ng-valid ng-dirty" ng-model="calendarView" btn-radio="'day'">
+                        </label> Jour
+                    </button>
+
+                    <button label class="btn btn-primary ng-untouched ng-valid ng-dirty" ng-model="calendarView" btn-radio="'week'">
+                        </label> Semaine
+                    </button>
+                    <button label class="btn btn-default ng-untouched ng-valid ng-dirty" ng-model="calendarView" btn-radio="'month'">
+                        </label>
+                        Mois
+                    </button>
+                    <button label class="btn btn-primary ng-untouched ng-valid ng-dirty" ng-model="calendarView" btn-radio="'year'">
+                        </label> Année
+                    </button>
+                </div>
+            </div>
         </form>
+        <h2 class="text-center">{{calendarTitle}}</h2>
         <mwl-calendar view="calendarView" current-day="calendarDay" events="events" view-title="calendarTitle" on-event-click="eventClicked(calendarEvent)" on-event-drop="calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd" edit-event-html="'<i class=\'glyphicon glyphicon-pencil\'></i>'" delete-event-html="'<i class=\'glyphicon glyphicon-remove\'></i>'" on-edit-event-click="eventEdited(calendarEvent)" on-delete-event-click="eventDeleted(calendarEvent)" auto-open="true">
         </mwl-calendar>
+        <br>
     </div>
 </body>
 
