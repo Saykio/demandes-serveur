@@ -22,70 +22,71 @@
 <body ng-controller="DemandesControleur">
     <div class="page-header entete">
         <h1>Demande de congé</h1>
-	</div>
-	<div class="container">
-		<form method="post">
-			<div class="form-group">
-				<label for="motif"> Type de congé</label> <input type="text"
-					name="motif" ng-model="motif" class="form-control"
-					placeholder="Type de congés" />
-			</div>
-			<div class="row">
-				<div class="col-md-3">
-					<div class="form-group">
-						<label for="debut">Date de début</label>
-						<p class="input-group">
-							<input type="date" datepicker-popup class="form-control"
-								ng-model="datedebut" is-open="debutOuvert" close-text="Close" /> <br>
-							<span class="input-group-btn" name="debut">
+    </div>
+    <div class="container">
+        <form method="post">
+            <div class="form-group">
+                <label for="motif"> Type de congé</label>
+                <input type="text" name="motif" ng-model="motif" class="form-control" placeholder="Type de congés" />
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="debut">Date de début</label>
+                        <p class="input-group">
+                            <input type="date" datepicker-popup class="form-control" ng-model="datedebut" is-open="debutOuvert" close-text="Close" />
+                            <br>
+                            <span class="input-group-btn" name="debut">
 								<button type="button" class="btn btn-default"
 									ng-click="ouvertureDebut($event)">
 									<i class="glyphicon glyphicon-calendar"></i>
 								</button>
 							</span>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3">
-					<div class="form-group">
-						<label for="debut">Date de fin</label>
-						<p class="input-group">
-							<input type="date" datepicker-popup class="form-control"
-								ng-model="datefin" is-open="debutFin" close-text="Close" /> <span
-								class="input-group-btn" name="datefin">
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="debut">Date de fin</label>
+                        <p class="input-group">
+                            <input type="date" datepicker-popup class="form-control" ng-model="datefin" is-open="debutFin" close-text="Close" /> <span class="input-group-btn" name="datefin">
 								<button type="button" class="btn btn-default"
 									ng-click="ouvertureFin($event)">
 									<i class="glyphicon glyphicon-calendar"></i>
 								</button>
 							</span>
-						</p>
-					</div>
-				</div>
-			</div>
-			<br>
-			<h4>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <h4>
 				Vous allez déposer un conge <span>{{datedebut |
 					date:'dd-MMM-yyyy'}}</span> à <span>{{datefin | date:'dd-MMM-yyyy'}}</span> !
 				<br> Votre motif est : <span ng-bind="motif"></span>!
 			</h4>
-			<h4>
+            <h4>
 				<p ng-show="erreur">Service indisponible</p>
 				<p ng-show="valide">Votre requête a bien été enregistrée!</p>
 			</h4>
-			<button ng-click="envoyerDemande()" type="submit"
-				class="btn btn-default">Ajouter</button>
-		</form>
-		<mwl-calendar view="calendarView" current-day="calendarDay"
-			events="events" view-title="calendarTitle"
-			on-event-click="eventClicked(calendarEvent)"
-			on-event-drop="calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
-			edit-event-html="'<i class=\'glyphicon glyphicon-pencil\'></i>'"
-			delete-event-html="'<i class=\'glyphicon glyphicon-remove\'></i>'"
-			on-edit-event-click="eventEdited(calendarEvent)"
-			on-delete-event-click="eventDeleted(calendarEvent)" auto-open="true">
-		</mwl-calendar>
-	</div>
+            <button ng-click="envoyerDemande()" type="submit" class="btn btn-default">Ajouter</button>
+            <button class="btn btn-primary" mwl-date-modifier date="calendarDay" decrement="calendarView">
+                Previous
+            </button>
+
+            <button class="btn btn-default" mwl-date-modifier date="calendarDay" set-to-today>
+                Today
+            </button>
+
+            <button class="btn btn-primary" mwl-date-modifier date="calendarDay" increment="calendarView">
+                Next
+            </button>
+        </form>
+        <mwl-calendar view="calendarView" current-day="calendarDay" events="events" view-title="calendarTitle" on-event-click="eventClicked(calendarEvent)" on-event-drop="calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd" edit-event-html="'<i class=\'glyphicon glyphicon-pencil\'></i>'" delete-event-html="'<i class=\'glyphicon glyphicon-remove\'></i>'" on-edit-event-click="eventEdited(calendarEvent)" on-delete-event-click="eventDeleted(calendarEvent)" auto-open="true">
+        </mwl-calendar>
+    </div>
 </body>
+
 </html>

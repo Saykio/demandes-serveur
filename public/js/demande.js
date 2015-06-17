@@ -14,14 +14,25 @@ moduleDemandes.controller('DemandesControleur', ['$scope', '$resource',
 
 function controleurDemandes($scope, $resource) {
     console.info('Démarrage du controleur');
-
+    $scope.events = new Array();
     var Demande = $resource('/rh/demandes');
-    var rows = Demande.query(function () {
-        for (var i = 0; i < rows.length; i++) {
-            var id = JSON.stringify(rows[i].id);
-            var motif = JSON.stringify(rows[i].motif);
-            var datedebut = JSON.stringify(rows[i].datedebut);
-            var datefin = JSON.stringify(rows[i].datefin);
+    var demandes = Demande.query(function () {
+        for (var i = 0; i < demandes.length; i++) {
+            var event = new Object();
+            var id = JSON.stringify(demandes[i].id);
+            var motif = JSON.stringify(demandes[i].motif);
+            var datedebut = demandes[i].datedebut;
+            var datefin = demandes[i].datefin;
+            event.title = motif;
+            event.type = 'succes';
+            event.startsAt = datedebut;
+            event.endsAt = datefin;
+            event.editable = false;
+            event.deletable = false;
+            event.incrementsBadgeTotal = true;
+            event.recursOn = 'year';
+            event.cssClass = 'a-css-class-name';
+            $scope.events.push(event);
             console.info('id : %s ,motif : %s,datedebut : %s,datefin : %s', id, motif, datedebut, datefin);
         }
     });
@@ -37,27 +48,28 @@ function controleurDemandes($scope, $resource) {
     };
     $scope.calendarDay = moment();
     $scope.calendarView = 'month';
-    $scope.events = [{
-        title: 'CA',
-        type: 'info',
-        startsAt: new Date(2015, 5, 11),
-        endsAt: new Date(2015, 5, 13),
-        editable: false,
-        deletable: false,
-        incrementsBadgeTotal: true,
-        recursOn: 'year',
-        cssClass: 'a-css-class-name'
- }, {
-        title: 'RCYC',
-        type: 'success',
-        startsAt: new Date(2015, 5, 1),
-        endsAt: new Date(2015, 5, 3),
-        editable: false,
-        deletable: false,
-        incrementsBadgeTotal: true,
-        recursOn: 'year',
-        cssClass: 'a-css-class-name'
- }];
+    //   $scope.events = new Array() -
+    //        n[{
+    //            title: 'CA',
+    //            type: 'info',
+    //            startsAt: new Date(2015, 5, 11),
+    //            endsAt: new Date(2015, 5, 13),
+    //            editable: false,
+    //            deletable: false,
+    //            incrementsBadgeTotal: true,
+    //            recursOn: 'year',
+    //            cssClass: 'a-css-class-name'
+    //        }, {
+    //            title: 'RCYC',
+    //            type: 'success',
+    //            startsAt: new Date(2015, 5, 1),
+    //            endsAt: new Date(2015, 5, 3),
+    //            editable: false,
+    //            deletable: false,
+    //            incrementsBadgeTotal: true,
+    //            recursOn: 'year',
+    //            cssClass: 'a-css-class-name'
+    //        }];
     $scope.envoyerDemande = function () {
         var dmd = new Demande();
         dmd.motif = $scope.motif;

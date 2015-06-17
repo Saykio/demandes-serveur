@@ -70,17 +70,17 @@ function init() {
 function lecture() {
 
     connection.connect();
-    connection.query("Select * From demandetable", function (err, rows) {
+    connection.query("Select * From demandetable", function (err, demandes) {
         //if (err) throw err;
 
         //        console.log("Error running query!");
-        console.log("nb " + rows.length);
+        console.log("nb " + demandes.length);
 
-        for (var i = 0; i < rows.length; i++) {
-            var id = JSON.stringify(rows[i].id);
-            var motif = JSON.stringify(rows[i].motif);
-            var datedebut = JSON.stringify(rows[i].datedebut);
-            var datefin = JSON.stringify(rows[i].datefin);
+        for (var i = 0; i < demandes.length; i++) {
+            var id = JSON.stringify(demandes[i].id);
+            var motif = JSON.stringify(demandes[i].motif);
+            var datedebut = JSON.stringify(demandes[i].datedebut);
+            var datefin = JSON.stringify(demandes[i].datefin);
             console.log('id : %s ,motif : %s,datedebut : %s,datefin : %s', id, motif, datedebut, datefin);
         }
 

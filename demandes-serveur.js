@@ -26,7 +26,7 @@ app.post('/rh/demandes', function (req, rep) {
     var motif = req.body.motif;
     var datedebut = req.body.datedebut;
     var datefin = req.body.datefin;
-    connection.connect();
+    //connection.connect();
     var demande = new Object();
     demande.motif = motif;
     demande.datedebut = datedebut;
@@ -40,26 +40,26 @@ app.post('/rh/demandes', function (req, rep) {
         if (err) throw err;
         console.log('inséré.');
     });
-    connection.end();
+    // connection.end();
 });
 app.get('/rh/demandes', function (req, rep) {
-    connection.connect();
+    //  connection.connect();
     connection.query("Select * From demandetable", function (err, demandes) {
-        //if (err) throw err;
+            //if (err) throw err;
 
-        //        console.log("Error running query!");
-        console.log("nb " + demandes.length);
+            //        console.log("Error running query!");
+            console.log("nb " + demandes.length);
 
-        for (var i = 0; i < demandes.length; i++) {
-            var id = JSON.stringify(demandes[i].id);
-            var motif = JSON.stringify(demandes[i].motif);
-            var datedebut = JSON.stringify(demandes[i].datedebut);
-            var datefin = JSON.stringify(demandes[i].datefin);
-            console.log('id : %s ,motif : %s,datedebut : %s,datefin : %s', id, motif, datedebut, datefin);
-        }
-        rep.send(demandes);
-    })
-  //  connection.end();
+            for (var i = 0; i < demandes.length; i++) {
+                var id = JSON.stringify(demandes[i].id);
+                var motif = JSON.stringify(demandes[i].motif);
+                var datedebut = JSON.stringify(demandes[i].datedebut);
+                var datefin = JSON.stringify(demandes[i].datefin);
+                console.log('id : %s ,motif : %s,datedebut : %s,datefin : %s', id, motif, datedebut, datefin);
+            }
+            rep.send(demandes);
+        })
+        //  connection.end();
 });
 
 var serveur = app.listen(8080, function () {
