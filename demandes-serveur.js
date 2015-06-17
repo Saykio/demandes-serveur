@@ -13,7 +13,7 @@ var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'demande-base'
+    database: 'demandes-base'
 });
 //**********************************************
 // Démarrage du serveur
@@ -41,6 +41,25 @@ app.post('/rh/demandes', function (req, rep) {
         console.log('inséré.');
     });
     connection.end();
+});
+app.get('/rh/demandes', function (req, rep) {
+    connection.connect();
+    connection.query("Select * From demandetable", function (err, demandes) {
+        //if (err) throw err;
+
+        //        console.log("Error running query!");
+        console.log("nb " + demandes.length);
+
+        for (var i = 0; i < demandes.length; i++) {
+            var id = JSON.stringify(demandes[i].id);
+            var motif = JSON.stringify(demandes[i].motif);
+            var datedebut = JSON.stringify(demandes[i].datedebut);
+            var datefin = JSON.stringify(demandes[i].datefin);
+            console.log('id : %s ,motif : %s,datedebut : %s,datefin : %s', id, motif, datedebut, datefin);
+        }
+        rep.send(demandes);
+    })
+  //  connection.end();
 });
 
 var serveur = app.listen(8080, function () {

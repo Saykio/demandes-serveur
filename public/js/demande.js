@@ -3,17 +3,28 @@
  * Montage du module de portail
  */
 // var moduleStage = angular.module('moduleStage', []);
-var moduleStage = angular.module('moduleStage', ['ngResource', 'ui.bootstrap',
+var moduleDemandes = angular.module('moduleDemandes', ['ngResource', 'ui.bootstrap',
   'mwl.calendar']);
 
 /**
  * Controler du portail
  */
-moduleStage.controller('StageControleur', ['$scope', '$resource',
-  controleurStage]);
+moduleDemandes.controller('DemandesControleur', ['$scope', '$resource',
+  controleurDemandes]);
 
-function controleurStage($scope, $resource) {
+function controleurDemandes($scope, $resource) {
     console.info('Démarrage du controleur');
+
+    var Demande = $resource('/rh/demandes');
+    var rows = Demande.query(function () {
+        for (var i = 0; i < rows.length; i++) {
+            var id = JSON.stringify(rows[i].id);
+            var motif = JSON.stringify(rows[i].motif);
+            var datedebut = JSON.stringify(rows[i].datedebut);
+            var datefin = JSON.stringify(rows[i].datefin);
+            console.info('id : %s ,motif : %s,datedebut : %s,datefin : %s', id, motif, datedebut, datefin);
+        }
+    });
     $scope.ouvertureDebut = function ($event) {
         $event.preventDefault();
         $event.stopPropagation();
@@ -47,14 +58,12 @@ function controleurStage($scope, $resource) {
         recursOn: 'year',
         cssClass: 'a-css-class-name'
  }];
-
     $scope.envoyerDemande = function () {
-        var Demande = $resource('/rh/demandes');
         var dmd = new Demande();
         dmd.motif = $scope.motif;
         dmd.datedebut = $scope.datedebut;
         dmd.datefin = $scope.datefin;
-        
+
         Demande.save(dmd, function () {
             console.info("Envoie d'une demande");
             $scope.valide = true;
