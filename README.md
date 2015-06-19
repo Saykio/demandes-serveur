@@ -24,9 +24,9 @@ git clone https://github.com/Saykio/demandes-serveur
 ```
 Il faudra installer bower via cette commande :  
 ```
-bower install
+npm install bower -g
 ```
-Il faudra aussi installer npm : 
+Il faudra aussi installer les modules npm : 
 ```
 npm install
 ```
