@@ -31,7 +31,7 @@ Il faudra aussi installer les modules npm :
 npm install
 ```
 Il faudra télécharger et installer phpmyadmin pour utiliser une base de données qui est fournie dans le projet. Pour pouvoir utiliser cette base de données, crée dans phpmyadmin une BDD du nom de demandes-base. Importez ensuite le document 
-[Home](wiki)
+[Home](#wiki)
 
 
 ##Utilisation :
