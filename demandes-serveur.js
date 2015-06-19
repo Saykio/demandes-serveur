@@ -11,14 +11,12 @@ var moment = require('moment');
 app.use(bodyParser.json());
 app.use('/rh', express.static('public'));
 
-// Initialisation de la connexion au serveur SGBD MYSQL
-var connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'demandes-base'
-});
-//mysql.createConnection('mysql://root:@localhost/demandes-base?reconnect=true');
+//    host: 'localhost',
+//    user: 'root',
+//    password: '',
+//    database: 'demandes-base'
+//});
+var connection = mysql.createConnection('mysql://root:@localhost/demandes-base?reconnect=true');
 //**********************************************
 // Démarrage du serveur
 // Méthode d'enregistrement d'une demande d'autorisation de congé
