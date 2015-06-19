@@ -44,5 +44,7 @@ Un message devrait confirmer que votre serveur fonctionne et que vous écoutez s
 
 ![Alt text](https://github.com/Saykio/demandes-serveur/blob/master/Doc/image/nodejs.JPG)
 
+Voici en gros ce que vous devriez obtenir. 
+![Alt text](https://github.com/Saykio/demandes-serveur/blob/master/Doc/image/calendrier.JPG)
 
 
