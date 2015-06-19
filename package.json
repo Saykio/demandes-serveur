@@ -19,7 +19,6 @@
     },
     "scripts": {
         "postinstall": "cd public && bower cache clean && bower install",
-        "test": "mocha",
         "start": "node demandes-serveur.js"
 
     },
