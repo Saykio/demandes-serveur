@@ -1,28 +1,31 @@
 {
-  "name": "demandes-serveur",
-  "version": "1.0.0",
-  "description": "stage node js serveur de demande de congés",
-  "main": "demandes-serveur.js",
-  "dependencies": {
-    "body-parser": "^1.13.0",
-    "express": "^4.12.4",
-    "moment": "^2.10.3",
-    "mysql": "^2.7.0"
-  },
-  "devDependencies": {
-    "assert": "^1.3.0",
-    "should": "^6.0.3",
-    "supertest": "^1.0.1"
-  },
-  "scripts": {
-      "postinstall": "cd public && bower cache clean && bower install",
-  "test": "mocha",
-  "start": "node demandes-serveur.js" 
+    "name": "demandes-serveur",
+    "version": "1.0.0",
+    "description": "stage node js serveur de demande de congés",
+    "main": "demandes-serveur.js",
+    "dependencies": {
+        "body-parser": "^1.13.0",
+        "express": "^4.12.4",
+        "moment": "^2.10.3",
+        "mysql": "^2.7.0"
+    },
+    "devDependencies": {
+        "assert": "^1.3.0",
+        "should": "^6.0.3",
+        "supertest": "^1.0.1"
+    },
+    "engines": {
+        "node": "0.12.4"
+    },
+    "scripts": {
+        "postinstall": "cd public && bower cache clean && bower install",
+        "test": "mocha",
+        "start": "node demandes-serveur.js"
 
-  },
-  "keywords": [
+    },
+    "keywords": [
     "stage"
   ],
-  "author": "",
-  "license": "ISC"
+    "author": "",
+    "license": "ISC"
 }

@@ -10,13 +10,18 @@ var moment = require('moment');
 
 app.use(bodyParser.json());
 app.use('/rh', express.static('public'));
+var url = process.env.CLEARDB_DATABASE_URL;
 
+if (url === undefined) {
+    url = 'mysql://root:@localhost/demandes-base';
+}
+console.log('url :%s ', url);
+var connection = mysql.createConnection(url);
 //    host: 'localhost',
 //    user: 'root',
 //    password: '',
 //    database: 'demandes-base'
 //});
-var connection = mysql.createConnection('mysql://root:@localhost/demandes-base?reconnect=true');
 //**********************************************
 // Démarrage du serveur
 // Méthode d'enregistrement d'une demande d'autorisation de congé
